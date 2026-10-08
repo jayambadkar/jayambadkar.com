@@ -1,5 +1,5 @@
 import { profile } from '../data';
-import { FourierFigure } from './figures';
+import { CltFigure } from './figures';
 import styles from './Footer.module.css';
 
 export interface FooterProps {
@@ -10,7 +10,7 @@ export function Footer({ onOpenTerminal }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className="container">
-        <FourierFigure n={6} className={styles.figure} />
+        <CltFigure n={6} className={styles.figure} />
         <div className={styles.inner}>
           <p>
             © {new Date().getFullYear()} {profile.name}

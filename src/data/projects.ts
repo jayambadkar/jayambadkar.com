@@ -93,4 +93,18 @@ export const projects: readonly Project[] = [
     year: '2025–26',
     links: [],
   },
+  {
+    id: 'latin-gcse',
+    title: 'Latin GCSE revision app',
+    note: 'Older side project, from school',
+    summary:
+      'A Blazor WebAssembly app for OCR GCSE Latin (J282): browse the vocabulary list, test yourself Latin-to-English or English-to-Latin with optional hints, and read notes on nouns and verbs. Installable as a PWA, and results are saved locally.',
+    kind: 'side-project',
+    tags: ['C#', 'Blazor', 'WebAssembly'],
+    year: '2022',
+    links: [
+      { label: 'Live', href: 'https://latin-gcse.netlify.app' },
+      { label: 'Code', href: 'https://github.com/jayambadkar/latin-gcse' },
+    ],
+  },
 ];

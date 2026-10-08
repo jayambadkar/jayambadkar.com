@@ -1,5 +1,6 @@
-export { FordCirclesFigure } from './FordCircles';
-export { FourierFigure } from './Fourier';
-export { LissajousFigure } from './Lissajous';
-export { LorenzFigure } from './Lorenz';
-export { RoseFigure } from './Rose';
+export { CltFigure } from './Clt';
+export { DijkstraFigure } from './Dijkstra';
+export { FoldFigure } from './Fold';
+export { GanttFigure } from './Gantt';
+export { LinearMapFigure } from './LinearMap';
+export { TaylorFigure } from './Taylor';

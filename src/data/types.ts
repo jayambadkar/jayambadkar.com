@@ -77,7 +77,7 @@ export interface LinkRef {
   href: string;
 }
 
-export type ProjectKind = 'research' | 'project' | 'coursework';
+export type ProjectKind = 'research' | 'project' | 'coursework' | 'side-project';
 
 export interface Project {
   id: string;

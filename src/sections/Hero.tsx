@@ -1,7 +1,7 @@
 import { profile, projects, socials } from '../data';
 import { Ambient } from '../components/Ambient';
 import { Icon } from '../components/Icon';
-import { LimitCycle } from '../components/LimitCycle';
+import { TaylorFigure } from '../components/figures';
 import { Marquee } from '../components/Marquee';
 import { RotatingPhrase } from '../components/RotatingPhrase';
 import { isMac, scrollToId, scrollToSection } from '../lib/scroll';
@@ -75,7 +75,7 @@ export function Hero({ onOpenPalette }: HeroProps) {
           </div>
         </div>
 
-        <LimitCycle className={styles.figure} />
+        <TaylorFigure n={1} className={styles.figure} />
       </div>
 
       <div className={`container ${styles.foot ?? ''}`}>

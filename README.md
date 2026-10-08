@@ -50,10 +50,10 @@ src/
     experience.ts              Work, education, volunteering
     socials.ts                 LinkedIn, GitHub, X, blog
     posts.ts                   AUTO-GENERATED from the blog feed (see below)
-  components/figures/          Hairline maths SVGs (Lorenz, Lissajous, Ford, rose, Fourier)
+  components/figures/          Hairline maths SVGs from JMC Y1–2 modules (Taylor, Gantt, eigen-ellipse, Dijkstra, foldr, CLT)
     sections.ts                Section ids/labels (nav, palette, terminal `goto`)
   sections/                    Page sections: Hero, Work, About (with Path so far), Blog, Contact
-  components/                  Header, Section, Ambient, LimitCycle, figures/*, Marquee, RotatingPhrase, CommandPalette, Terminal, …
+  components/                  Header, Section, Ambient, figures/*, Marquee, RotatingPhrase, CommandPalette, Terminal, …
   hooks/                       useTheme, useScrolled, useActiveSection, useHotkey, useInView, useReducedMotion
   lib/                         terminal.ts (command registry), scroll.ts, cx.ts
   styles/global.css            Design tokens (both themes), reset, utilities

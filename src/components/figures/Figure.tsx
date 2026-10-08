@@ -45,7 +45,11 @@ export function Figure({
         {children}
       </svg>
       <figcaption className={styles.caption} data-align={align}>
-        <em>Fig. {n}</em> {caption}
+        <em>Fig. {n}</em>
+        <span className={styles.sep} aria-hidden="true">
+          ·
+        </span>
+        {caption}
       </figcaption>
     </figure>
   );

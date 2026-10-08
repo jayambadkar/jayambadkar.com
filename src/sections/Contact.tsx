@@ -2,7 +2,7 @@ import { profile, socials, type SocialLink } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
-import { RoseFigure } from '../components/figures';
+import { FoldFigure } from '../components/figures';
 import styles from './Contact.module.css';
 
 export function Contact() {
@@ -14,7 +14,7 @@ export function Contact() {
       index="04"
       label="Contact"
       title="Get in touch"
-      figure={<RoseFigure n={5} />}
+      figure={<FoldFigure n={5} />}
     >
       <Reveal>
         <p className={styles.intro}>{profile.contactLine}</p>

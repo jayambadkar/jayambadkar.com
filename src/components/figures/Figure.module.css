@@ -70,7 +70,7 @@
 .label {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 13px;
+  font-size: 16px;
   fill: var(--fg-subtle);
 }
 
@@ -93,4 +93,9 @@
 
 .nowrap {
   white-space: nowrap;
+}
+
+.sep {
+  margin: 0 0.4em;
+  color: var(--fg-subtle);
 }

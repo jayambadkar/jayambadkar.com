@@ -2,7 +2,7 @@ import { BLOG_URL, posts } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
-import { FordCirclesFigure } from '../components/figures';
+import { DijkstraFigure } from '../components/figures';
 import styles from './Blog.module.css';
 
 const LIMIT = 6;
@@ -23,7 +23,7 @@ export function Blog() {
       label="Blog"
       title="Blog"
       kicker="Notes on maths, university and life."
-      figure={<FordCirclesFigure n={4} />}
+      figure={<DijkstraFigure n={4} />}
     >
       <ol className={styles.list}>
         {recent.map((p, i) => (

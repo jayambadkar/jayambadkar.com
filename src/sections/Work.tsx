@@ -3,7 +3,7 @@ import { projects, type Project, type ProjectKind } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
-import { LissajousFigure } from '../components/figures';
+import { GanttFigure } from '../components/figures';
 import { cx } from '../lib/cx';
 import styles from './Work.module.css';
 
@@ -11,6 +11,7 @@ const KIND_LABEL: Record<ProjectKind, string> = {
   research: 'Research',
   project: 'Project',
   coursework: 'Imperial',
+  'side-project': 'Side project',
 };
 
 const ALL = 'All';
@@ -73,7 +74,7 @@ export function Work() {
       id="work"
       index="01"
       label="Work"
-      figure={<LissajousFigure n={2} />}
+      figure={<GanttFigure n={2} />}
       title="Selected work"
       kicker="Research, things built for Palantir’s developer community, and systems projects from Imperial."
     >
