@@ -118,7 +118,7 @@ export function Terminal({ open, onClose, goTo, setTheme, toggleTheme }: Termina
           />
           <span className={styles.dot} data-color="yellow" aria-hidden="true" />
           <span className={styles.dot} data-color="green" aria-hidden="true" />
-          <span className={styles.title}>jay — zsh — 80×24</span>
+          <span className={styles.title}>guest — jayambadkar.com</span>
         </div>
         <div
           ref={scrollRef}

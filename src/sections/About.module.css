@@ -1,79 +1,49 @@
-.layout {
+.lead {
+  max-width: 26ch;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.columns {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3.5rem;
 }
 
 .bio {
   display: grid;
-  gap: 1.1rem;
-  font-size: 1.12rem;
+  gap: 1rem;
+  max-width: 44ch;
   color: var(--fg-muted);
-  max-width: 62ch;
 }
 
-.bio p:first-child {
+.facts {
+  border-top: 1px solid var(--hairline);
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 0.9rem;
+}
+
+.fact dt {
+  color: var(--fg-subtle);
+}
+
+.fact dd {
   color: var(--fg);
 }
 
-.eduCard {
-  padding: 1.6rem;
-  overflow: hidden;
-}
-
-.eduCard::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: var(--gradient);
-}
-
-.eduLabel {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-}
-
-.eduTitle {
-  margin-top: 0.6rem;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-}
-
-.eduCourse {
-  margin-top: 0.25rem;
-  color: var(--fg-muted);
-}
-
-.eduPeriod {
-  margin-top: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--fg-subtle);
-}
-
-.honours {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.1rem;
-}
-
-.honours li {
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
 @media (max-width: 860px) {
-  .layout {
+  .columns {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }

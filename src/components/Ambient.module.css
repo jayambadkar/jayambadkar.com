@@ -1,0 +1,104 @@
+.ambient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Fade the washes into the paper towards the bottom of the hero. */
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.ambient span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: var(--wash-opacity);
+  will-change: transform;
+  animation: drift 38s ease-in-out infinite alternate;
+}
+
+.ambient .sage {
+  width: 46vw;
+  height: 46vw;
+  top: -12vw;
+  right: -6vw;
+  background: var(--wash-sage);
+}
+
+.ambient .blue {
+  width: 40vw;
+  height: 40vw;
+  top: 14vw;
+  right: 22vw;
+  background: var(--wash-blue);
+  animation-duration: 46s;
+  animation-delay: -12s;
+}
+
+.ambient .apricot {
+  width: 38vw;
+  height: 38vw;
+  top: 4vw;
+  left: -10vw;
+  background: var(--wash-apricot);
+  animation-duration: 52s;
+  animation-delay: -24s;
+}
+
+.ambient .rose {
+  width: 26vw;
+  height: 26vw;
+  top: 26vw;
+  left: 18vw;
+  background: var(--wash-rose);
+  opacity: calc(var(--wash-opacity) * 0.7);
+  animation-duration: 60s;
+  animation-delay: -6s;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4vw, 3vw, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-3vw, 5vw, 0) scale(0.95);
+  }
+}
+
+@media (max-width: 760px) {
+  .ambient span {
+    filter: blur(60px);
+  }
+
+  .ambient .sage {
+    width: 90vw;
+    height: 90vw;
+    top: -20vw;
+    right: -30vw;
+  }
+
+  .ambient .blue {
+    width: 80vw;
+    height: 80vw;
+    top: 60vw;
+    right: 10vw;
+  }
+
+  .ambient .apricot {
+    width: 80vw;
+    height: 80vw;
+    top: 10vw;
+    left: -40vw;
+  }
+
+  .ambient .rose {
+    width: 60vw;
+    height: 60vw;
+    top: 110vw;
+    left: 30vw;
+  }
+}

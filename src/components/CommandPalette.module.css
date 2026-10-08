@@ -1,35 +1,33 @@
 .dialog {
-  width: min(640px, calc(100vw - 2rem));
-  margin: 12vh auto auto;
+  width: min(580px, calc(100vw - 2rem));
+  margin: 14vh auto auto;
 }
 
 .dialog[open] {
-  animation: pop 0.22s var(--ease);
+  animation: pop 0.3s var(--ease);
 }
 
 @keyframes pop {
   from {
     opacity: 0;
-    transform: translateY(-8px) scale(0.98);
+    transform: translateY(-6px);
   }
 }
 
 .panel {
   overflow: hidden;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  background: var(--glass);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-soft);
 }
 
 .searchRow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .searchIcon {
@@ -43,7 +41,7 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 1rem;
+  font-size: 0.98rem;
 }
 
 .input:focus-visible {
@@ -62,10 +60,10 @@
 }
 
 .group {
-  padding: 0.6rem 0.75rem 0.3rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  padding: 0.75rem 0.75rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
@@ -75,29 +73,27 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 0.75rem;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 0.92rem;
   color: var(--fg-muted);
 }
 
 .itemActive {
-  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  background: var(--bg-sunken);
   color: var(--fg);
 }
 
 .itemIcon {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: var(--bg-elev-2);
+  width: 20px;
   flex: none;
+  color: var(--fg-subtle);
 }
 
 .itemActive .itemIcon {
-  background: var(--gradient);
-  color: #fff;
+  color: var(--accent);
 }
 
 .itemLabel {
@@ -105,8 +101,8 @@
 }
 
 .hint {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   color: var(--fg-subtle);
 }
 
@@ -114,14 +110,15 @@
   padding: 1.5rem;
   text-align: center;
   color: var(--fg-subtle);
+  font-size: 0.9rem;
 }
 
 .footer {
   display: flex;
   gap: 1.25rem;
-  padding: 0.6rem 1rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.75rem;
+  padding: 0.65rem 1.15rem;
+  border-top: 1px solid var(--hairline);
+  font-size: 0.72rem;
   color: var(--fg-subtle);
 }
 

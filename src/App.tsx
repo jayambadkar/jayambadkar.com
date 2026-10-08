@@ -6,7 +6,6 @@ import { Terminal } from './components/Terminal';
 import { sections, socials, type SectionId } from './data';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useHotkey } from './hooks/useHotkey';
-import { useReducedMotion } from './hooks/useReducedMotion';
 import { useTheme } from './hooks/useTheme';
 import { openExternal, scrollToSection } from './lib/scroll';
 import { About } from './sections/About';
@@ -28,7 +27,6 @@ const GOTO_KEYS: Record<string, SectionId> = {
 
 export function App() {
   const { theme, setTheme, toggleTheme } = useTheme();
-  const reducedMotion = useReducedMotion();
   const active = useActiveSection(SECTION_IDS);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
@@ -158,7 +156,7 @@ export function App() {
         onOpenPalette={openPalette}
       />
       <main id="main">
-        <Hero theme={theme} reducedMotion={reducedMotion} onOpenPalette={openPalette} />
+        <Hero onOpenPalette={openPalette} />
         <About />
         <Projects />
         <Experience />

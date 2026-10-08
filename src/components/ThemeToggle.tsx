@@ -17,11 +17,11 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       aria-label={`Switch to ${next} theme`}
       title={`Switch to ${next} theme`}
     >
-      <span className={styles.icon} data-active={theme === 'dark'}>
-        <Icon name="moon" />
-      </span>
       <span className={styles.icon} data-active={theme === 'light'}>
-        <Icon name="sun" />
+        <Icon name="moon" size={16} />
+      </span>
+      <span className={styles.icon} data-active={theme === 'dark'}>
+        <Icon name="sun" size={16} />
       </span>
     </button>
   );

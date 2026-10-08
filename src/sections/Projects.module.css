@@ -1,170 +1,122 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.75rem;
+  gap: 0.35rem 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .filter {
-  padding: 0.35rem 0.85rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--fg-muted);
+  position: relative;
+  padding: 0.2rem 0;
+  border: none;
+  background: none;
+  color: var(--fg-subtle);
   font-size: 0.85rem;
-  transition:
-    color 0.2s,
-    background-color 0.2s,
-    border-color 0.2s;
+  transition: color 0.25s;
 }
 
 .filter:hover {
   color: var(--fg);
-  border-color: var(--border-strong);
 }
 
 .filterActive {
-  background: var(--fg);
-  border-color: var(--fg);
-  color: var(--bg);
+  color: var(--fg);
 }
 
-.filterActive:hover {
-  color: var(--bg);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.25rem;
-}
-
-.cell {
-  display: flex;
-}
-
-.card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  overflow: hidden;
-}
-
-.card::before {
+.filterActive::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--mx, 50%) var(--my, 0%),
-    color-mix(in srgb, var(--accent) 12%, transparent),
-    transparent 45%
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
 }
 
-.card:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+.list {
+  border-top: 1px solid var(--hairline);
 }
 
-.card:hover::before {
-  opacity: 1;
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--hairline);
 }
 
-.featured {
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-}
-
-.cardTop {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--fg-subtle);
-}
-
-.status::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--fg-subtle);
-}
-
-.status[data-status='live']::before {
-  background: #34d399;
-}
-
-.status[data-status='in-progress']::before {
-  background: #fbbf24;
-}
-
-.year {
-  margin-left: auto;
-  font-family: var(--font-mono);
+.num {
+  padding-top: 0.55rem;
   font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
   color: var(--fg-subtle);
 }
 
 .title {
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-}
-
-.titleLink {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.75rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.15;
+  transition: color 0.3s;
 }
 
 .titleLink::after {
-  /* Make the whole card clickable. */
+  /* Make the whole row clickable. */
   content: '';
   position: absolute;
   inset: 0;
 }
 
-.titleLink svg {
-  color: var(--fg-subtle);
-  transition:
-    transform 0.2s var(--ease),
-    color 0.2s;
-}
-
-.card:hover .titleLink svg {
-  color: var(--accent-2);
-  transform: translate(2px, -2px);
-}
-
 .summary {
-  flex: 1;
+  margin-top: 0.6rem;
+  max-width: 56ch;
   color: var(--fg-muted);
-  font-size: 0.95rem;
 }
 
 .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-subtle);
 }
 
-.tags li {
-  padding: 0.15rem 0.55rem;
-  border-radius: 6px;
-  background: var(--bg-elev-2);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--fg-muted);
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  align-self: start;
+  padding-top: 0.55rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-subtle);
+}
+
+.arrow {
+  color: var(--fg-subtle);
+  transition:
+    transform 0.4s var(--ease),
+    color 0.3s;
+}
+
+.linked:hover .title {
+  color: var(--accent);
+}
+
+.linked:hover .arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  .num {
+    display: none;
+  }
 }

@@ -35,8 +35,8 @@ export const projects: readonly Project[] = [
     id: 'this-site',
     title: 'jayambadkar.com',
     summary:
-      'This website: Vite + React + strict TypeScript, a generative canvas hero, a command palette and a hidden terminal.',
-    tags: ['TypeScript', 'React', 'Canvas'],
+      'This website: Vite + React + strict TypeScript, with an ambient colour-wash hero, a command palette and a hidden terminal.',
+    tags: ['TypeScript', 'React', 'CSS'],
     status: 'live',
     repo: 'https://github.com/jayambadkar',
     year: 2026,

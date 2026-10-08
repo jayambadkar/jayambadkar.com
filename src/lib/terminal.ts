@@ -180,12 +180,14 @@ export const commands: Record<string, Command> = {
   neofetch: {
     description: 'system info, but make it me',
     run: () => [
-      { kind: 'art', text: '     ██╗ █████╗ ' },
-      { kind: 'art', text: '     ██║██╔══██╗   ' },
-      { kind: 'art', text: '     ██║███████║   ' },
-      { kind: 'art', text: '██   ██║██╔══██║   ' },
-      { kind: 'art', text: '╚█████╔╝██║  ██║   ' },
-      { kind: 'art', text: ' ╚════╝ ╚═╝  ╚═╝   ' },
+      ...[
+        String.raw`     _   _    `,
+        String.raw`    | | / \   `,
+        String.raw` _  | |/ _ \  `,
+        String.raw`| |_| / ___ \ `,
+        String.raw` \___/_/   \_\ `,
+        '',
+      ].map((t): TerminalLine => ({ kind: 'art', text: t })),
       text(`user      ${profile.name}`),
       text(`uni       ${profile.education.institution}`),
       text(`course    JMC (Maths × CS)`),

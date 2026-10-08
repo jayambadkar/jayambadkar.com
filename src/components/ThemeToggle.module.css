@@ -2,25 +2,17 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--bg-elev);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
   color: var(--fg-muted);
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    transform 0.2s var(--ease);
+  transition: color 0.25s;
 }
 
 .toggle:hover {
   color: var(--fg);
-  border-color: var(--border-strong);
-}
-
-.toggle:active {
-  transform: scale(0.94);
 }
 
 .icon {
@@ -28,11 +20,11 @@
   display: grid;
   place-items: center;
   transition:
-    opacity 0.3s var(--ease),
-    transform 0.4s var(--ease);
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
 }
 
 .icon[data-active='false'] {
   opacity: 0;
-  transform: rotate(-90deg) scale(0.5);
+  transform: rotate(-45deg) scale(0.6);
 }

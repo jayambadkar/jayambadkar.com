@@ -18,7 +18,8 @@ function readInitialTheme(): Theme {
   } catch {
     // localStorage can throw (e.g. privacy mode); fall through.
   }
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  // Light is the designed default, regardless of OS preference.
+  return 'light';
 }
 
 export interface ThemeApi {
@@ -40,7 +41,7 @@ export function useTheme(): ThemeApi {
       // ignore persistence failures
     }
     const meta = document.querySelector('meta[name="theme-color"]');
-    meta?.setAttribute('content', theme === 'dark' ? '#07080d' : '#f7f7fb');
+    meta?.setAttribute('content', theme === 'dark' ? '#171512' : '#f7f4ee');
   }, [theme]);
 
   const setTheme = useCallback((next: Theme) => {

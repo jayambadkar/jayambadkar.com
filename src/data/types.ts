@@ -36,10 +36,10 @@ export interface Education {
   honours: string[];
 }
 
-export interface Highlight {
-  /** Big, glanceable label, e.g. "ex-Palantir". */
-  title: string;
-  detail: string;
+export interface Fact {
+  /** Small label, e.g. "Previously". */
+  label: string;
+  value: string;
 }
 
 export interface Profile {
@@ -47,14 +47,15 @@ export interface Profile {
   firstName: string;
   initials: string;
   location: string;
-  /** One-line headline under the name. */
-  headline: string;
-  /** Rotating phrases in the hero. */
-  roles: string[];
+  /** One-line descriptor under the name in the hero. */
+  descriptor: string;
+  /** Short credential line in the hero, joined with " · ". */
+  credentials: string[];
   /** Short bio paragraphs for the About section. */
   bio: string[];
   education: Education;
-  highlights: Highlight[];
+  /** "At a glance" facts in the About section. */
+  facts: Fact[];
   /** Set when an email address should be public. */
   email?: string;
 }
