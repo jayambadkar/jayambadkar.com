@@ -1,0 +1,96 @@
+.figure {
+  margin: 0;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Faint scaffolding: axes, grids, guide circles. */
+.guide {
+  fill: none;
+  stroke: var(--fg-faint);
+  stroke-width: 0.75;
+  vector-effect: non-scaling-stroke;
+}
+
+.guideDashed {
+  composes: guide;
+  stroke-dasharray: 2 4;
+}
+
+/* Secondary curves. */
+.trace {
+  fill: none;
+  stroke: var(--fg-muted);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+
+/* The curve the figure is about. */
+.main {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Strokes with pathLength="1" draw in when the figure enters the viewport. */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur, 3.5s) cubic-bezier(0.45, 0, 0.2, 1) var(--delay, 0s);
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 1.2s var(--ease) var(--delay, 0s);
+}
+
+[data-inview='true'] .draw {
+  stroke-dashoffset: 0;
+}
+
+[data-inview='true'] .fade {
+  opacity: var(--to, 1);
+}
+
+/* The single accent dot. */
+.dot {
+  fill: var(--accent);
+}
+
+.label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  fill: var(--fg-subtle);
+}
+
+.caption {
+  margin-top: 0.85rem;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--fg-subtle);
+}
+
+.caption[data-align='center'] {
+  text-align: center;
+}
+
+.caption em {
+  margin-right: 0.35em;
+  color: var(--fg-muted);
+}
+
+.nowrap {
+  white-space: nowrap;
+}

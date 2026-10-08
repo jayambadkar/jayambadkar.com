@@ -37,13 +37,13 @@
 }
 
 .excerpt {
-  max-width: 60ch;
-  font-size: 0.93rem;
+  max-width: 65ch;
+  font-size: 1rem;
   color: var(--fg-muted);
 }
 
 .cats {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: lowercase;
   color: var(--fg-subtle);

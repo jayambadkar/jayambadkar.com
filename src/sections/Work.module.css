@@ -72,7 +72,7 @@
 
 .num {
   padding-top: 0.55rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   color: var(--fg-subtle);
   transition: color 0.3s;
@@ -105,14 +105,14 @@
 
 .note {
   margin-top: 0.5rem;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
   color: var(--accent);
 }
 
 .summary {
   margin-top: 0.6rem;
-  max-width: 58ch;
+  max-width: 65ch;
   color: var(--fg-muted);
 }
 
@@ -125,7 +125,7 @@
 }
 
 .tags {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   letter-spacing: 0.04em;
   color: var(--fg-subtle);
 }
@@ -167,7 +167,7 @@
   align-items: flex-end;
   gap: 0.15rem;
   padding-top: 0.55rem;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
   color: var(--fg-subtle);
   white-space: nowrap;

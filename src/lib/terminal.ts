@@ -1,4 +1,13 @@
-import { experience, posts, profile, projects, sections, socials, type SectionId } from '../data';
+import {
+  BLOG_URL,
+  experience,
+  posts,
+  profile,
+  projects,
+  sections,
+  socials,
+  type SectionId,
+} from '../data';
 import type { Theme } from '../hooks/useTheme';
 
 /** A single rendered line in the terminal. */
@@ -34,6 +43,12 @@ const error = (t: string): TerminalLine => ({ kind: 'error', text: t });
 
 const sectionIds = sections.map((s) => s.id);
 const isSectionId = (v: string): v is SectionId => (sectionIds as string[]).includes(v);
+/** Old names still work in `goto`. */
+const SECTION_ALIASES: Record<string, SectionId> = {
+  experience: 'about',
+  writing: 'blog',
+  projects: 'work',
+};
 
 const FILES: Record<string, () => TerminalLine[]> = {
   'about.txt': () => profile.bio.map(text),
@@ -108,11 +123,13 @@ export const commands: Record<string, Command> = {
     run: () => profile.honours.map((h) => text(`  ${h.year.padEnd(8)} ${h.title}`)),
   },
   blog: {
-    description: 'recent posts',
-    run: () =>
-      posts
+    description: 'recent blog posts',
+    run: () => [
+      ...posts
         .slice(0, 5)
         .map((p): TerminalLine => ({ kind: 'link', text: `${p.date}  ${p.title}`, href: p.url })),
+      { kind: 'link', text: `full blog → ${BLOG_URL.replace('https://', '')}`, href: BLOG_URL },
+    ],
   },
   socials: {
     description: 'where to find me',
@@ -129,7 +146,8 @@ export const commands: Record<string, Command> = {
     description: 'jump to a section',
     usage: 'goto <section>',
     run: (args, ctx) => {
-      const target = args[0]?.toLowerCase();
+      const arg = args[0]?.toLowerCase();
+      const target = arg ? (SECTION_ALIASES[arg] ?? arg) : undefined;
       if (!target || !isSectionId(target)) {
         return [error(`usage: goto <${sectionIds.join('|')}>`)];
       }

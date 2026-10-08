@@ -6,13 +6,15 @@
  * and arXiv. Only verifiable facts go here.
  */
 
-export type SectionId = 'home' | 'about' | 'work' | 'experience' | 'writing' | 'contact';
+export type SectionId = 'home' | 'work' | 'about' | 'blog' | 'contact';
 
 export interface Section {
   id: SectionId;
   label: string;
   /** Keyboard hint shown in the command palette. */
   shortcut?: string;
+  /** Show in the header nav (kept short on purpose). */
+  nav?: boolean;
 }
 
 export type IconName = 'github' | 'x' | 'linkedin' | 'mail' | 'globe' | 'file' | 'pen';
@@ -41,8 +43,8 @@ export interface Profile {
   tagline: string;
   /** One-line descriptor (eyebrow above the tagline). */
   descriptor: string;
-  /** Rotating "Thinking about …" phrases, drawn from Jay's own writing/research. */
-  thinkingAbout: string[];
+  /** Rotating lines in the hero, taken from Jay's LinkedIn About. */
+  outlook: OutlookLine[];
   /** Short credential line in the hero, joined with " · ". */
   credentials: string[];
   /** Bio paragraphs for the About section; the first is set as a large lead. */
@@ -53,6 +55,13 @@ export interface Profile {
   honours: Honour[];
   /** Closing line for the Contact section (Jay's own words). */
   contactLine: string;
+}
+
+export interface OutlookLine {
+  /** Small lead-in, e.g. "Interested in". */
+  lead: string;
+  /** His phrase, e.g. "all things maths, tech and revolutionary". */
+  phrase: string;
 }
 
 export interface Honour {

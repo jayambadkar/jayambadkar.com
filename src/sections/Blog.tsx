@@ -2,7 +2,8 @@ import { BLOG_URL, posts } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
-import styles from './Writing.module.css';
+import { FordCirclesFigure } from '../components/figures';
+import styles from './Blog.module.css';
 
 const LIMIT = 6;
 
@@ -13,15 +14,16 @@ function formatDate(iso: string): string {
   return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d);
 }
 
-export function Writing() {
+export function Blog() {
   const recent = posts.slice(0, LIMIT);
   return (
     <Section
-      id="writing"
-      index="04"
-      label="Writing"
-      title="From the blog"
+      id="blog"
+      index="03"
+      label="Blog"
+      title="Blog"
       kicker="Notes on maths, university and life."
+      figure={<FordCirclesFigure n={4} />}
     >
       <ol className={styles.list}>
         {recent.map((p, i) => (
@@ -42,7 +44,7 @@ export function Writing() {
       </ol>
       <Reveal>
         <a className={styles.more} href={BLOG_URL} target="_blank" rel="noopener noreferrer">
-          All posts on jayambadkar.github.io
+          Read the full blog at jayambadkar.github.io
           <Icon name="arrow-up-right" size={14} />
         </a>
       </Reveal>

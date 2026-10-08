@@ -1,6 +1,5 @@
 import { experience, type ExperienceKind } from '../data';
 import { Reveal } from '../components/Reveal';
-import { Section } from '../components/Section';
 import styles from './Experience.module.css';
 
 const GROUPS: readonly { kind: ExperienceKind; label: string }[] = [
@@ -9,16 +8,20 @@ const GROUPS: readonly { kind: ExperienceKind; label: string }[] = [
   { kind: 'volunteering', label: 'Volunteering' },
 ];
 
-export function Experience() {
+/** "Path so far": work, education and volunteering, rendered inside About. */
+export function PathSoFar() {
   return (
-    <Section id="experience" index="03" label="Experience" title="Path so far">
+    <div className={styles.path}>
+      <Reveal>
+        <h3 className={styles.heading}>Path so far</h3>
+      </Reveal>
       {GROUPS.map(({ kind, label }) => {
         const items = experience.filter((e) => e.kind === kind);
         if (items.length === 0) return null;
         return (
           <div key={kind} className={styles.group}>
             <Reveal>
-              <h3 className={styles.groupLabel}>{label}</h3>
+              <p className={styles.groupLabel}>{label}</p>
             </Reveal>
             <ol className={styles.list}>
               {items.map((e, i) => (
@@ -45,6 +48,6 @@ export function Experience() {
           </div>
         );
       })}
-    </Section>
+    </div>
   );
 }

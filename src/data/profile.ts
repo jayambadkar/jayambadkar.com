@@ -1,9 +1,8 @@
 import type { Profile } from './types';
 
 /**
- * Source: Jay's LinkedIn profile (pasted 2026-10-08), plus his blog. The bio
- * lead and contact line are Jay's own words from LinkedIn. The "thinking about"
- * phrases come from his research and the "coolest topics" in his May 2026 post.
+ * Source: Jay's LinkedIn profile (pasted 2026-10-08). The bio lead, hero
+ * outlook lines and contact line are Jay's own words from his LinkedIn About.
  */
 export const profile: Profile = {
   name: 'Jay Ambadkar',
@@ -13,13 +12,12 @@ export const profile: Profile = {
   // After Jay's own sign-off: "Looking forward to what the future holds!"
   tagline: 'Looking forwards.',
   descriptor: 'Mathematics & Computer Science · Imperial College London',
-  thinkingAbout: [
-    'persistent homology inside language models',
-    'multi-core scheduling and cache affinity',
-    'memory in AI systems',
-    'Picard–Lindelöf and local ODE theory',
-    'the Euler–Lagrange equation',
-    'going from zero to one',
+  // Each line is lifted from his LinkedIn About.
+  outlook: [
+    { lead: 'Excited about', phrase: 'growth in an ever-changing world' },
+    { lead: 'Interested in', phrase: 'all things maths, tech and revolutionary' },
+    { lead: 'Committed to', phrase: 'upholding ethical standards' },
+    { lead: 'Looking forward to', phrase: 'what the future holds' },
   ],
   credentials: ['Imperial', 'ex-Palantir', "Dean's List", 'DevCon Fellow'],
   bio: [

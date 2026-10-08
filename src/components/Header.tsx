@@ -34,7 +34,7 @@ export function Header({ active, theme, onToggleTheme, onOpenPalette }: HeaderPr
         <nav aria-label="Primary" className={styles.nav}>
           <ul>
             {sections
-              .filter((s) => s.id !== 'home')
+              .filter((s) => s.nav)
               .map((s) => (
                 <li key={s.id}>
                   <a

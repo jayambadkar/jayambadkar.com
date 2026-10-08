@@ -8,13 +8,14 @@
   --bg-raised: #fbf9f5;
   --bg-sunken: #efeae1;
   /* Ink */
-  --fg: #1f1c18;
-  --fg-muted: #5c564d;
-  --fg-subtle: #8c8579;
+  --fg: #1c1915;
+  --fg-muted: #46413a;
+  --fg-subtle: #676055;
+  --fg-faint: rgba(28, 25, 21, 0.2);
   --hairline: rgba(31, 28, 24, 0.12);
   --hairline-strong: rgba(31, 28, 24, 0.22);
   /* One quiet accent */
-  --accent: #9a4f31;
+  --accent: #8f4529;
   /* Ambient washes */
   --wash-sage: #cfdbc6;
   --wash-blue: #c9d6e3;
@@ -32,12 +33,13 @@
   --bg: #171512;
   --bg-raised: #1e1b17;
   --bg-sunken: #12100d;
-  --fg: #ece6dc;
-  --fg-muted: #b0a799;
-  --fg-subtle: #7f776b;
+  --fg: #f0ebe2;
+  --fg-muted: #c9c0b2;
+  --fg-subtle: #a39a8c;
+  --fg-faint: rgba(240, 235, 226, 0.2);
   --hairline: rgba(236, 230, 220, 0.11);
   --hairline-strong: rgba(236, 230, 220, 0.2);
-  --accent: #d79a78;
+  --accent: #e0a582;
   --wash-sage: #2e3a2f;
   --wash-blue: #29323d;
   --wash-apricot: #45302a;
@@ -84,8 +86,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.7;
   font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

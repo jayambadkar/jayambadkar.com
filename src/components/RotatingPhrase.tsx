@@ -1,39 +1,39 @@
 import { useEffect, useState } from 'react';
+import type { OutlookLine } from '../data';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import styles from './RotatingPhrase.module.css';
 
 export interface RotatingPhraseProps {
-  label: string;
-  phrases: readonly string[];
+  lines: readonly OutlookLine[];
   interval?: number;
 }
 
-/** "Thinking about <phrase>" with a slow cross-fade between phrases. */
-export function RotatingPhrase({ label, phrases, interval = 3600 }: RotatingPhraseProps) {
+/** "<lead> <phrase>" lines that slowly cross-fade. Static (first line) under reduced motion. */
+export function RotatingPhrase({ lines, interval = 4200 }: RotatingPhraseProps) {
   const reducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (reducedMotion || phrases.length < 2) return;
+    if (reducedMotion || lines.length < 2) return;
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % phrases.length);
+      setIndex((i) => (i + 1) % lines.length);
     }, interval);
     return () => {
       window.clearInterval(id);
     };
-  }, [reducedMotion, phrases.length, interval]);
+  }, [reducedMotion, lines.length, interval]);
 
   return (
-    <p className={styles.root}>
-      <span className={styles.label}>{label}</span>
-      <span className="visually-hidden">{phrases.join('; ')}</span>
-      <span className={styles.stage} aria-hidden="true">
-        {phrases.map((p, i) => (
-          <span key={p} className={styles.phrase} data-active={i === index}>
-            {p}
-          </span>
+    <div className={styles.root}>
+      <p className="visually-hidden">{lines.map((l) => `${l.lead} ${l.phrase}.`).join(' ')}</p>
+      <div className={styles.stage} aria-hidden="true">
+        {lines.map((l, i) => (
+          <p key={l.phrase} className={styles.line} data-active={i === index}>
+            <span className={styles.lead}>{l.lead}</span>
+            <span className={styles.phrase}>{l.phrase}</span>
+          </p>
         ))}
-      </span>
-    </p>
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,12 @@
 .footer {
-  padding: 0 0 2.5rem;
+  padding: 2rem 0 2.5rem;
   color: var(--fg-subtle);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.figure {
+  margin: 0 0 3rem;
+  opacity: 0.9;
 }
 
 .inner {

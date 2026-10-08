@@ -30,7 +30,7 @@ export function Hero({ onOpenPalette }: HeroProps) {
           </h1>
 
           <div className={styles.thinking}>
-            <RotatingPhrase label="Thinking about" phrases={profile.thinkingAbout} />
+            <RotatingPhrase lines={profile.outlook} />
           </div>
 
           <p className={styles.credentials}>

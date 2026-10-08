@@ -24,12 +24,26 @@
   transform: scaleX(1);
 }
 
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-width: 0;
+}
+
+.figure {
+  position: sticky;
+  top: calc(var(--header-h) + 2.5rem);
+  max-width: 220px;
+  margin-top: 1rem;
+}
+
 .aside {
   display: flex;
   gap: 0.9rem;
   align-items: baseline;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
@@ -71,5 +85,9 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .figure {
+    display: none;
   }
 }

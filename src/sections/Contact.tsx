@@ -2,13 +2,20 @@ import { profile, socials, type SocialLink } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
+import { RoseFigure } from '../components/figures';
 import styles from './Contact.module.css';
 
 export function Contact() {
   const links: readonly SocialLink[] = socials;
 
   return (
-    <Section id="contact" index="05" label="Contact" title="Get in touch">
+    <Section
+      id="contact"
+      index="04"
+      label="Contact"
+      title="Get in touch"
+      figure={<RoseFigure n={5} />}
+    >
       <Reveal>
         <p className={styles.intro}>{profile.contactLine}</p>
       </Reveal>

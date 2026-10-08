@@ -3,28 +3,27 @@ import { CommandPalette, type PaletteAction } from './components/CommandPalette'
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Terminal } from './components/Terminal';
-import { sections, socials, type SectionId } from './data';
+import { BLOG_URL, sections, socials, type SectionId } from './data';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useHotkey } from './hooks/useHotkey';
 import { useTheme } from './hooks/useTheme';
 import { openExternal, scrollToSection } from './lib/scroll';
 import { About } from './sections/About';
 import { Contact } from './sections/Contact';
-import { Experience } from './sections/Experience';
 import { Hero } from './sections/Hero';
+import { Blog } from './sections/Blog';
 import { Work } from './sections/Work';
-import { Writing } from './sections/Writing';
 
 const SECTION_IDS: readonly SectionId[] = sections.map((s) => s.id);
 
 /** "g" then a letter jumps to a section, vim/GitHub style. */
 const GOTO_KEYS: Record<string, SectionId> = {
   h: 'home',
-  a: 'about',
   w: 'work',
   p: 'work',
-  b: 'writing',
-  e: 'experience',
+  a: 'about',
+  e: 'about',
+  b: 'blog',
   c: 'contact',
 };
 
@@ -109,7 +108,7 @@ export function App() {
         label: `Go to ${s.label}`,
         group: 'Navigate',
         icon: 'hash',
-        keywords: s.id,
+        keywords: s.id === 'about' ? 'about experience path education honours' : s.id,
         ...(s.shortcut ? { hint: s.shortcut } : {}),
         perform: () => {
           scrollToSection(s.id);
@@ -126,6 +125,17 @@ export function App() {
           openExternal(l.href);
         },
       })),
+      {
+        id: 'open-blog',
+        label: 'Read the full blog',
+        group: 'Links',
+        icon: 'pen',
+        keywords: 'blog posts jayambadkar.github.io',
+        hint: 'jayambadkar.github.io',
+        perform: () => {
+          openExternal(BLOG_URL);
+        },
+      },
       {
         id: 'toggle-theme',
         label: `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`,
@@ -160,10 +170,9 @@ export function App() {
       />
       <main id="main">
         <Hero onOpenPalette={openPalette} />
-        <About />
         <Work />
-        <Experience />
-        <Writing />
+        <About />
+        <Blog />
         <Contact />
       </main>
       <Footer onOpenTerminal={openTerminal} />

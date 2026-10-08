@@ -12,6 +12,8 @@ export interface SectionProps {
   title?: string;
   /** Optional short line under the title. */
   kicker?: ReactNode;
+  /** Optional maths figure shown in the left column on wide screens. */
+  figure?: ReactNode;
   children: ReactNode;
 }
 
@@ -19,7 +21,7 @@ export interface SectionProps {
  * Editorial two-column section: small label on the left, content on the right.
  * The top hairline draws itself in when the section scrolls into view.
  */
-export function Section({ id, index, label, title, kicker, children }: SectionProps) {
+export function Section({ id, index, label, title, kicker, figure, children }: SectionProps) {
   const headingId = `${id}-title`;
   const [ref, inView] = useInView<HTMLElement>('0px 0px -15% 0px');
   return (
@@ -33,16 +35,19 @@ export function Section({ id, index, label, title, kicker, children }: SectionPr
     >
       <div className={`container ${styles.grid ?? ''}`}>
         <span className={styles.rule} aria-hidden="true" />
-        <Reveal className={styles.aside}>
-          <span className={styles.index}>{index}</span>
-          {title ? (
-            <span className={styles.label}>{label}</span>
-          ) : (
-            <h2 id={headingId} className={styles.label}>
-              {label}
-            </h2>
-          )}
-        </Reveal>
+        <div className={styles.side}>
+          <Reveal className={styles.aside}>
+            <span className={styles.index}>{index}</span>
+            {title ? (
+              <span className={styles.label}>{label}</span>
+            ) : (
+              <h2 id={headingId} className={styles.label}>
+                {label}
+              </h2>
+            )}
+          </Reveal>
+          {figure ? <div className={styles.figure}>{figure}</div> : null}
+        </div>
         <div className={styles.body}>
           {title ? (
             <Reveal className={styles.head}>

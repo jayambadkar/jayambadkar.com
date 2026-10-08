@@ -3,6 +3,7 @@ import { projects, type Project, type ProjectKind } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
+import { LissajousFigure } from '../components/figures';
 import { cx } from '../lib/cx';
 import styles from './Work.module.css';
 
@@ -70,8 +71,9 @@ export function Work() {
   return (
     <Section
       id="work"
-      index="02"
+      index="01"
       label="Work"
+      figure={<LissajousFigure n={2} />}
       title="Selected work"
       kicker="Research, things built for Palantir’s developer community, and systems projects from Imperial."
     >

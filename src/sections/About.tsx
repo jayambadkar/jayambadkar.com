@@ -2,12 +2,14 @@ import { profile } from '../data';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
+import { LorenzFigure } from '../components/figures';
+import { PathSoFar } from './Experience';
 import styles from './About.module.css';
 
 export function About() {
   const [lead, ...rest] = profile.bio;
   return (
-    <Section id="about" index="01" label="About">
+    <Section id="about" index="02" label="About" figure={<LorenzFigure n={3} />}>
       <Reveal>
         <p className={styles.lead}>{lead}</p>
       </Reveal>
@@ -28,6 +30,8 @@ export function About() {
           </dl>
         </Reveal>
       </div>
+
+      <PathSoFar />
 
       <Reveal className={styles.honoursBlock}>
         <h3 className={styles.subhead}>Honours &amp; certifications</h3>

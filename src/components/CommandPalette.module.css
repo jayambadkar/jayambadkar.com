@@ -61,9 +61,9 @@
 
 .group {
   padding: 0.75rem 0.75rem 0.35rem;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
@@ -101,7 +101,7 @@
 }
 
 .hint {
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
   color: var(--fg-subtle);
 }
@@ -118,7 +118,7 @@
   gap: 1.25rem;
   padding: 0.65rem 1.15rem;
   border-top: 1px solid var(--hairline);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   color: var(--fg-subtle);
 }
 
