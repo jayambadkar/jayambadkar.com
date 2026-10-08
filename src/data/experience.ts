@@ -13,14 +13,13 @@ export const experience: readonly Experience[] = [
     highlights: [],
   },
   {
-    id: 'stewardshipped',
+    id: 'stealth-ai',
     kind: 'work',
-    organisation: 'Stewardshipped.ai',
+    organisation: 'Stealth AI Startup',
     role: 'Engineering Intern (contract)',
     period: 'Jun 2025 – Jan 2026',
     location: 'Remote, US',
-    summary:
-      'Designed, built and deployed secure AI workflows for top firms at a legal AI startup.',
+    summary: 'Designed, built and deployed secure AI workflows for top firms.',
     highlights: [],
     tech: ['AI engineering'],
   },

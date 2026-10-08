@@ -2,6 +2,13 @@ import type { SocialLink } from './types';
 
 export const socials: readonly SocialLink[] = [
   {
+    id: 'email',
+    label: 'Email',
+    href: 'mailto:me@jayambadkar.com',
+    handle: 'me@jayambadkar.com',
+    icon: 'mail',
+  },
+  {
     id: 'linkedin',
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/jay-ambadkar/',

@@ -15,7 +15,13 @@ export function Contact() {
       <ul className={styles.list}>
         {links.map((s, i) => (
           <Reveal as="li" key={s.id} delay={i * 60}>
-            <a href={s.href} className={styles.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={s.href}
+              className={styles.link}
+              {...(s.href.startsWith('mailto:')
+                ? {}
+                : { target: '_blank', rel: 'noopener noreferrer' })}
+            >
               <span className={styles.label}>{s.label}</span>
               <span className={styles.handle}>{s.handle}</span>
               <Icon name="arrow-up-right" size={16} className={styles.arrow} />

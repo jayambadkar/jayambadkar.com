@@ -25,7 +25,7 @@ export const profile: Profile = {
   bio: [
     'Excited about educational, personal and industrial growth in an ever-changing world. Interested in all things maths, tech and revolutionary, while committed to upholding ethical standards.',
     "I'm in my final year of Mathematics and Computer Science at Imperial College London. This summer I was a Forward Deployed Engineer intern at Palantir, working on deployments, core product and surge efforts, and I've since received a return offer.",
-    'Before that I built secure AI workflows at a legal AI startup, improved multi-threaded simulations at Angstrom, and won one of five Palantir DevCon Fellowships worldwide.',
+    'Before that I built secure AI workflows at a stealth AI startup, improved multi-threaded simulations at Angstrom, and won one of five Palantir DevCon Fellowships worldwide.',
   ],
   facts: [
     { label: 'Studying', value: 'BEng Mathematics & Computer Science, Imperial (2024–27)' },

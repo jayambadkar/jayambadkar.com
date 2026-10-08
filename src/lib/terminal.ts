@@ -80,6 +80,9 @@ export const commands: Record<string, Command> = {
       text(profile.descriptor),
       text(profile.credentials.join(' · ')),
       muted(profile.tagline),
+      ...socials
+        .filter((s) => s.id === 'email')
+        .map((s): TerminalLine => ({ kind: 'link', text: s.handle, href: s.href })),
       muted(`📍 ${profile.location}`),
     ],
   },
@@ -118,6 +121,8 @@ export const commands: Record<string, Command> = {
   },
   github: { description: 'open GitHub', run: openSocial('github') },
   linkedin: { description: 'open LinkedIn', run: openSocial('linkedin') },
+  email: { description: 'send me an email', run: openSocial('email') },
+  mail: { description: 'send me an email', hidden: true, run: openSocial('email') },
   x: { description: 'open X / Twitter', run: openSocial('x') },
   twitter: { description: 'open X / Twitter', hidden: true, run: openSocial('x') },
   goto: {

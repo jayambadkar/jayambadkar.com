@@ -117,10 +117,10 @@ export function App() {
       })),
       ...socials.map((l): PaletteAction => ({
         id: `link-${l.id}`,
-        label: `Open ${l.label}`,
+        label: l.id === 'email' ? 'Email Jay' : `Open ${l.label}`,
         group: 'Links',
         icon: l.icon,
-        keywords: l.handle,
+        keywords: l.id === 'email' ? `${l.handle} mail contact` : l.handle,
         hint: l.handle,
         perform: () => {
           openExternal(l.href);

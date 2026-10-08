@@ -134,7 +134,12 @@ export function Terminal({ open, onClose, goTo, setTheme, toggleTheme }: Termina
                   <span className={styles.prompt}>{PROMPT}</span> {line.text}
                 </>
               ) : line.kind === 'link' ? (
-                <a href={line.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={line.href}
+                  {...(line.href.startsWith('mailto:')
+                    ? {}
+                    : { target: '_blank', rel: 'noopener noreferrer' })}
+                >
                   {line.text}
                 </a>
               ) : (

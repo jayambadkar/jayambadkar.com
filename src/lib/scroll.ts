@@ -15,6 +15,10 @@ export function scrollToSection(id: SectionId): void {
 }
 
 export function openExternal(href: string): void {
+  if (href.startsWith('mailto:')) {
+    window.location.href = href;
+    return;
+  }
   window.open(href, '_blank', 'noopener,noreferrer');
 }
 
