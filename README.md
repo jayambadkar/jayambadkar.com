@@ -45,14 +45,15 @@ src/
   main.tsx, App.tsx            Entry point and app shell (hotkeys, palette actions)
   data/                        ← ALL CONTENT LIVES HERE (typed)
     types.ts                   Interfaces: Profile, Project, Experience, SocialLink, …
-    profile.ts                 Name, bio, education, hero highlights
-    projects.ts                Project cards
-    experience.ts              Timeline entries
-    socials.ts                 GitHub, X, …
+    profile.ts                 Tagline, "thinking about" phrases, bio, facts, honours
+    projects.ts                Selected work (also feeds the hero index marquee)
+    experience.ts              Work, education, volunteering
+    socials.ts                 LinkedIn, GitHub, X, blog
+    posts.ts                   AUTO-GENERATED from the blog feed (see below)
     sections.ts                Section ids/labels (nav, palette, terminal `goto`)
-  sections/                    Page sections: Hero, About, Projects, Experience, Contact
-  components/                  Header, Section, Ambient, Badge, ThemeToggle, CommandPalette, Terminal, …
-  hooks/                       useTheme, useScrolled, useActiveSection, useHotkey
+  sections/                    Page sections: Hero, About, Work, Experience, Writing, Contact
+  components/                  Header, Section, Ambient, LimitCycle, Marquee, RotatingPhrase, CommandPalette, Terminal, …
+  hooks/                       useTheme, useScrolled, useActiveSection, useHotkey, useInView, useReducedMotion
   lib/                         terminal.ts (command registry), scroll.ts, cx.ts
   styles/global.css            Design tokens (both themes), reset, utilities
 ```
@@ -61,12 +62,12 @@ src/
 
 All copy is typed data in `src/data/`, so the compiler catches missing or misspelt fields.
 
-- Anything still unconfirmed is marked **`TODO(content)`**. Run `grep -rn "TODO" src/data` to list it.
-- Entries with `placeholder: true` show a small, muted **Placeholder** pill on the page and in the terminal. Remove the flag once an entry is real.
+- Content comes from Jay's LinkedIn profile, GitHub READMEs, arXiv and his blog. Only verifiable facts go in; if something isn't known, leave it out.
+- **Writing** is generated: `scripts/fetch-posts.mjs` reads https://jayambadkar.github.io/feed.xml and writes `src/data/posts.ts`. It runs automatically before every `npm run build` (`prebuild`); run `npm run fetch:posts` by hand to refresh. If the feed can't be reached, the committed `posts.ts` is kept, so builds never fail on the network.
 - To add a project, append to `projects` in `src/data/projects.ts`. The tag filters are generated from `tags`.
 - To add a social link, append to `src/data/socials.ts`. It shows up automatically in Contact, the command palette and the terminal (`socials`). `icon` must be one of the `IconName` values in `types.ts`.
 - To add a terminal command, add an entry to `commands` in `src/lib/terminal.ts`.
-- To add a section, add its id to `SectionId` and `sections.ts`, create `src/sections/Foo.tsx` wrapping its content in `<Section id="foo" index="05" label="Foo">` (from `components/Section.tsx`), and render it in `App.tsx`.
+- To add a section, add its id to `SectionId` and `sections.ts`, create `src/sections/Foo.tsx` wrapping its content in `<Section id="foo" index="06" label="Foo">` (from `components/Section.tsx`), and render it in `App.tsx`.
 - Theme colours (paper, ink, accent, washes) are CSS variables at the top of `src/styles/global.css`.
 
 ## Deployment (GitHub Pages + Namecheap)

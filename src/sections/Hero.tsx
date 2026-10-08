@@ -1,7 +1,10 @@
-import { profile, socials } from '../data';
+import { profile, projects, socials } from '../data';
 import { Ambient } from '../components/Ambient';
 import { Icon } from '../components/Icon';
-import { isMac, scrollToSection } from '../lib/scroll';
+import { LimitCycle } from '../components/LimitCycle';
+import { Marquee } from '../components/Marquee';
+import { RotatingPhrase } from '../components/RotatingPhrase';
+import { isMac, scrollToId, scrollToSection } from '../lib/scroll';
 import styles from './Hero.module.css';
 
 export interface HeroProps {
@@ -9,61 +12,92 @@ export interface HeroProps {
 }
 
 export function Hero({ onOpenPalette }: HeroProps) {
+  const linkedin = socials.find((s) => s.id === 'linkedin');
   const github = socials.find((s) => s.id === 'github');
-  const [first, ...rest] = profile.name.split(' ');
 
   return (
     <section id="home" className={styles.hero} aria-labelledby="hero-title" tabIndex={-1}>
       <Ambient />
 
-      <div className={`container ${styles.content ?? ''}`}>
-        <h1 id="hero-title" className={styles.title}>
-          <span className={styles.line}>{first}</span>{' '}
-          <span className={styles.line}>
-            <em>{rest.join(' ')}</em>
-          </span>
-        </h1>
+      <div className={`container ${styles.layout ?? ''}`}>
+        <div className={styles.text}>
+          <p className={styles.eyebrow}>
+            <span>{profile.descriptor}</span>
+          </p>
 
-        <p className={styles.descriptor}>{profile.descriptor}.</p>
+          <h1 id="hero-title" className={styles.title}>
+            {profile.tagline}
+          </h1>
 
-        <p className={styles.credentials}>
-          {profile.credentials.map((c, i) => (
-            <span key={c}>
-              {i > 0 ? (
-                <span className={styles.sep} aria-hidden="true">
-                  ·
-                </span>
-              ) : null}
-              {c}
-            </span>
-          ))}
-        </p>
+          <div className={styles.thinking}>
+            <RotatingPhrase label="Thinking about" phrases={profile.thinkingAbout} />
+          </div>
 
-        <div className={styles.links}>
-          <a
-            href="#projects"
-            className={styles.link}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('projects');
-            }}
-          >
-            Projects
-            <Icon name="arrow-right" size={14} />
-          </a>
-          {github ? (
-            <a href={github.href} className={styles.link} target="_blank" rel="noopener noreferrer">
-              GitHub
-              <Icon name="arrow-up-right" size={14} />
+          <p className={styles.credentials}>
+            {profile.credentials.map((c, i) => (
+              <span key={c} className={styles.credential}>
+                {c}
+                {i < profile.credentials.length - 1 ? (
+                  <span className={styles.sep} aria-hidden="true">
+                    ·
+                  </span>
+                ) : null}
+              </span>
+            ))}
+          </p>
+
+          <div className={styles.links}>
+            <a
+              href="#work"
+              className={`${styles.link ?? ''} ${styles.primary ?? ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('work');
+              }}
+            >
+              Selected work
+              <Icon name="arrow-right" size={14} />
             </a>
-          ) : null}
+            {[linkedin, github].map((s) =>
+              s ? (
+                <a
+                  key={s.id}
+                  href={s.href}
+                  className={styles.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {s.label}
+                  <Icon name="arrow-up-right" size={14} />
+                </a>
+              ) : null,
+            )}
+          </div>
         </div>
+
+        <LimitCycle className={styles.figure} />
       </div>
 
       <div className={`container ${styles.foot ?? ''}`}>
-        <span>Based in the {profile.location}</span>
+        <Marquee
+          label="Index"
+          items={projects.map((p) => ({
+            id: p.id,
+            node: (
+              <a
+                href={`#project-${p.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId(`project-${p.id}`);
+                }}
+              >
+                {p.title}
+              </a>
+            ),
+          }))}
+        />
         <button type="button" className={styles.hint} onClick={onOpenPalette}>
-          Press <kbd>{isMac ? '⌘' : 'Ctrl'}</kbd> <kbd>K</kbd> to navigate
+          <kbd>{isMac ? '⌘' : 'Ctrl'}</kbd> <kbd>K</kbd>
         </button>
       </div>
     </section>

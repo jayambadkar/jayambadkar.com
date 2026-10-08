@@ -1,14 +1,27 @@
 .section {
   padding: clamp(3.5rem, 6vw, 5rem) 0;
-  scroll-margin-top: 0;
 }
 
 .grid {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(160px, 1fr) 3fr;
   gap: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--hairline);
+}
+
+.rule {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: var(--hairline-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.6s var(--ease);
+}
+
+[data-inview='true'] .rule {
+  transform: scaleX(1);
 }
 
 .aside {
@@ -37,12 +50,21 @@
   min-width: 0;
 }
 
-.title {
-  max-width: 18ch;
+.head {
   margin-bottom: 2.5rem;
+}
+
+.title {
+  max-width: 20ch;
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
+}
+
+.kicker {
+  margin-top: 1rem;
+  max-width: 52ch;
+  color: var(--fg-muted);
 }
 
 @media (max-width: 860px) {

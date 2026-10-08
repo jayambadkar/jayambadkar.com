@@ -12,7 +12,8 @@ import { About } from './sections/About';
 import { Contact } from './sections/Contact';
 import { Experience } from './sections/Experience';
 import { Hero } from './sections/Hero';
-import { Projects } from './sections/Projects';
+import { Work } from './sections/Work';
+import { Writing } from './sections/Writing';
 
 const SECTION_IDS: readonly SectionId[] = sections.map((s) => s.id);
 
@@ -20,7 +21,9 @@ const SECTION_IDS: readonly SectionId[] = sections.map((s) => s.id);
 const GOTO_KEYS: Record<string, SectionId> = {
   h: 'home',
   a: 'about',
-  p: 'projects',
+  w: 'work',
+  p: 'work',
+  b: 'writing',
   e: 'experience',
   c: 'contact',
 };
@@ -158,8 +161,9 @@ export function App() {
       <main id="main">
         <Hero onOpenPalette={openPalette} />
         <About />
-        <Projects />
+        <Work />
         <Experience />
+        <Writing />
         <Contact />
       </main>
       <Footer onOpenTerminal={openTerminal} />

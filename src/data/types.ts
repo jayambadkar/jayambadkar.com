@@ -1,14 +1,12 @@
 /**
  * Content model for the site. Everything rendered on the page comes from typed
- * data in `src/data`, so content can be swapped (e.g. from Jay's CV) without
- * touching components.
+ * data in `src/data`, so content can be updated without touching components.
  *
- * Convention: any entry with `placeholder: true` is NOT real content yet and is
- * rendered with a visible "placeholder" badge. Search the repo for `TODO(content)`
- * to find everything that still needs filling in.
+ * Sources: Jay's CV (Aug 2026), his GitHub, his blog (jayambadkar.github.io)
+ * and arXiv. Only verifiable facts go here.
  */
 
-export type SectionId = 'home' | 'about' | 'projects' | 'experience' | 'contact';
+export type SectionId = 'home' | 'about' | 'work' | 'experience' | 'writing' | 'contact';
 
 export interface Section {
   id: SectionId;
@@ -17,7 +15,7 @@ export interface Section {
   shortcut?: string;
 }
 
-export type IconName = 'github' | 'x' | 'linkedin' | 'mail' | 'globe' | 'file';
+export type IconName = 'github' | 'x' | 'linkedin' | 'mail' | 'globe' | 'file' | 'pen';
 
 export interface SocialLink {
   id: string;
@@ -26,14 +24,6 @@ export interface SocialLink {
   /** Short display handle, e.g. "@JayAmbadkar". */
   handle: string;
   icon: IconName;
-}
-
-export interface Education {
-  institution: string;
-  course: string;
-  /** e.g. "2023 – 2027". TODO(content) where unknown. */
-  period?: string;
-  honours: string[];
 }
 
 export interface Fact {
@@ -47,45 +37,72 @@ export interface Profile {
   firstName: string;
   initials: string;
   location: string;
-  /** One-line descriptor under the name in the hero. */
+  /** The hero headline, set large in the serif. */
+  tagline: string;
+  /** One-line descriptor (eyebrow above the tagline). */
   descriptor: string;
+  /** Rotating "Thinking about …" phrases, drawn from Jay's own writing/research. */
+  thinkingAbout: string[];
   /** Short credential line in the hero, joined with " · ". */
   credentials: string[];
-  /** Short bio paragraphs for the About section. */
+  /** Bio paragraphs for the About section; the first is set as a large lead. */
   bio: string[];
-  education: Education;
   /** "At a glance" facts in the About section. */
   facts: Fact[];
-  /** Set when an email address should be public. */
-  email?: string;
+  /** Honours, awards and certifications. */
+  honours: Honour[];
+  /** Closing line for the Contact section (Jay's own words). */
+  contactLine: string;
 }
 
-export type ProjectStatus = 'live' | 'in-progress' | 'archived';
+export interface Honour {
+  title: string;
+  detail: string;
+  /** e.g. "2025" */
+  year: string;
+  href?: string;
+}
+
+export interface LinkRef {
+  label: string;
+  href: string;
+}
+
+export type ProjectKind = 'research' | 'project' | 'coursework';
 
 export interface Project {
   id: string;
   title: string;
   summary: string;
+  /** Short distinction, e.g. "DevCon2 Fellowship winner". */
+  note?: string;
+  kind: ProjectKind;
   tags: string[];
-  year?: number;
-  status: ProjectStatus;
-  href?: string;
-  repo?: string;
-  featured?: boolean;
-  placeholder?: boolean;
+  /** Display period, e.g. "2025" or "2025–26". */
+  year: string;
+  links: LinkRef[];
 }
+
+export type ExperienceKind = 'work' | 'education' | 'volunteering';
 
 export interface Experience {
   id: string;
+  kind: ExperienceKind;
   organisation: string;
   role: string;
-  /** Free-form, e.g. "Jun 2024". */
-  start: string;
-  /** Omit for current roles. */
-  end?: string;
+  /** Free-form display period, e.g. "Jul – Sep 2025". */
+  period: string;
   location?: string;
   summary: string;
   highlights: string[];
   tech?: string[];
-  placeholder?: boolean;
+}
+
+export interface Post {
+  title: string;
+  /** ISO date (YYYY-MM-DD). */
+  date: string;
+  url: string;
+  categories: string[];
+  excerpt: string;
 }

@@ -1,31 +1,64 @@
 import type { Profile } from './types';
 
 /**
- * Verified facts only. Anything not yet confirmed is marked TODO(content).
+ * Source: Jay's LinkedIn profile (pasted 2026-10-08), plus his blog. The bio
+ * lead and contact line are Jay's own words from LinkedIn. The "thinking about"
+ * phrases come from his research and the "coolest topics" in his May 2026 post.
  */
 export const profile: Profile = {
   name: 'Jay Ambadkar',
   firstName: 'Jay',
   initials: 'JA',
   location: 'United Kingdom',
-  descriptor: 'Maths & Computer Science at Imperial College London',
-  credentials: ['Imperial', 'ex-Palantir', "Dean's List"],
-  bio: [
-    "I'm Jay, a Joint Mathematics and Computer Science (JMC) student at Imperial College London, based in the UK.",
-    "Previously at Palantir. I'm on the Dean's List, and I like problems that sit right where rigorous maths meets real software.",
-    // TODO(content): replace/extend with a proper bio from the CV.
+  // After Jay's own sign-off: "Looking forward to what the future holds!"
+  tagline: 'Looking forwards.',
+  descriptor: 'Mathematics & Computer Science · Imperial College London',
+  thinkingAbout: [
+    'persistent homology inside language models',
+    'multi-core scheduling and cache affinity',
+    'memory in AI systems',
+    'Picard–Lindelöf and local ODE theory',
+    'the Euler–Lagrange equation',
+    'going from zero to one',
   ],
-  education: {
-    institution: 'Imperial College London',
-    course: 'Joint Mathematics and Computer Science (JMC)',
-    // TODO(content): add period, e.g. '2023 – 2027'.
-    honours: ["Dean's List"],
-  },
+  credentials: ['Imperial', 'ex-Palantir', "Dean's List", 'DevCon Fellow'],
+  bio: [
+    'Excited about educational, personal and industrial growth in an ever-changing world. Interested in all things maths, tech and revolutionary, while committed to upholding ethical standards.',
+    "I'm in my final year of Mathematics and Computer Science at Imperial College London. This summer I was a Forward Deployed Engineer intern at Palantir, working on deployments, core product and surge efforts, and I've since received a return offer.",
+    'Before that I built secure AI workflows at a legal AI startup, improved multi-threaded simulations at Angstrom, and won one of five Palantir DevCon Fellowships worldwide.',
+  ],
   facts: [
-    { label: 'Studying', value: 'Joint Maths & Computer Science, Imperial College London' },
-    { label: 'Previously', value: 'Palantir' },
-    { label: 'Honours', value: "Dean's List" },
+    { label: 'Studying', value: 'BEng Mathematics & Computer Science, Imperial (2024–27)' },
+    { label: 'Most recently', value: 'Forward Deployed Engineer intern, Palantir' },
+    { label: 'Results', value: "87.05% (Y1, #2 in cohort) · 83.15% (Y2, top 5) · Dean's List ×2" },
+    { label: 'Research', value: 'Persistent homology in LLMs (TAG-DS)' },
     { label: 'Based in', value: 'United Kingdom' },
   ],
-  // TODO(content): set `email` if it should be public.
+  honours: [
+    {
+      title: 'Palantir DevCon Fellowship',
+      detail: 'One of five globally, for Small Business Connector',
+      year: '2025',
+    },
+    {
+      title: 'G-Research Prize',
+      detail: 'Top 10 non-final-year students in the department',
+      year: '2025',
+    },
+    { title: "Dean's List", detail: 'Imperial College London, Years 1 and 2', year: '2025–26' },
+    {
+      title: 'Imperial Computing Entrance Scholarship',
+      detail: 'One of 12 awarded',
+      year: '2024',
+    },
+    { title: 'Most Helpful Student', detail: 'Imperial, COMP40009', year: '2025' },
+    {
+      title: 'Foundry & AIP Builder Foundations',
+      detail: 'Palantir certification',
+      year: '2025',
+      href: 'https://verify.skilljar.com/c/c87nxbsvt2ui',
+    },
+    { title: 'CREST Gold Award', detail: 'British Science Association', year: '2023' },
+  ],
+  contactLine: 'If you have any cool ideas or just want to chat, please do get in touch.',
 };

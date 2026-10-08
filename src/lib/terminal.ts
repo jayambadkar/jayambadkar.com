@@ -1,4 +1,4 @@
-import { experience, profile, projects, sections, socials, type SectionId } from '../data';
+import { experience, posts, profile, projects, sections, socials, type SectionId } from '../data';
 import type { Theme } from '../hooks/useTheme';
 
 /** A single rendered line in the terminal. */
@@ -77,8 +77,9 @@ export const commands: Record<string, Command> = {
     description: 'who is this guy?',
     run: () => [
       accent(profile.name),
-      text(`${profile.education.course} @ ${profile.education.institution}`),
-      text(`ex-Palantir · ${profile.education.honours.join(' · ')}`),
+      text(profile.descriptor),
+      text(profile.credentials.join(' · ')),
+      muted(profile.tagline),
       muted(`📍 ${profile.location}`),
     ],
   },
@@ -89,18 +90,26 @@ export const commands: Record<string, Command> = {
   projects: {
     description: 'list projects',
     run: () =>
-      projects.flatMap((p) => [
-        accent(`▸ ${p.title}${p.placeholder ? '  [placeholder]' : ''}`),
-        muted(`  ${p.summary}`),
-      ]),
+      projects.flatMap((p) => [accent(`▸ ${p.title}  (${p.year})`), muted(`  ${p.summary}`)]),
   },
   experience: {
     description: 'work & education',
     run: () =>
       experience.flatMap((e) => [
-        accent(`▸ ${e.organisation} — ${e.role}${e.placeholder ? '  [placeholder]' : ''}`),
-        muted(`  ${e.start}${e.end ? ` – ${e.end}` : ' – present'}`),
+        accent(`▸ ${e.organisation} — ${e.role}`),
+        muted(`  ${e.period}`),
       ]),
+  },
+  honours: {
+    description: 'prizes & certifications',
+    run: () => profile.honours.map((h) => text(`  ${h.year.padEnd(8)} ${h.title}`)),
+  },
+  blog: {
+    description: 'recent posts',
+    run: () =>
+      posts
+        .slice(0, 5)
+        .map((p): TerminalLine => ({ kind: 'link', text: `${p.date}  ${p.title}`, href: p.url })),
   },
   socials: {
     description: 'where to find me',
@@ -108,6 +117,7 @@ export const commands: Record<string, Command> = {
       socials.map((s) => ({ kind: 'link', text: `${s.label}: ${s.handle}`, href: s.href })),
   },
   github: { description: 'open GitHub', run: openSocial('github') },
+  linkedin: { description: 'open LinkedIn', run: openSocial('linkedin') },
   x: { description: 'open X / Twitter', run: openSocial('x') },
   twitter: { description: 'open X / Twitter', hidden: true, run: openSocial('x') },
   goto: {
@@ -189,10 +199,11 @@ export const commands: Record<string, Command> = {
         '',
       ].map((t): TerminalLine => ({ kind: 'art', text: t })),
       text(`user      ${profile.name}`),
-      text(`uni       ${profile.education.institution}`),
-      text(`course    JMC (Maths × CS)`),
-      text(`prev      Palantir`),
-      text(`honours   ${profile.education.honours.join(', ')}`),
+      text('uni       Imperial College London'),
+      text('course    JMC (Maths × CS)'),
+      text('prev      Palantir (FDE intern)'),
+      text("honours   DevCon Fellowship, G-Research Prize, Dean's List ×2"),
+      text(`mood      ${profile.tagline}`),
       text('shell     react-tsx (strict mode)'),
     ],
   },

@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em 0.6em;
+}
+
+.label {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.stage {
+  display: grid;
+  min-width: 0;
+}
+
+.phrase {
+  grid-area: 1 / 1;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--fg);
+  opacity: 0;
+  transform: translateY(0.35em);
+  filter: blur(3px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease),
+    filter 0.9s var(--ease);
+}
+
+.phrase[data-active='true'] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}

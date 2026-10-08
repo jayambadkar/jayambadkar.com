@@ -20,3 +20,10 @@ export function openExternal(href: string): void {
 
 export const isMac: boolean =
   typeof navigator !== 'undefined' && /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
+
+/** Smoothly scroll to any element id (e.g. a project row). */
+export function scrollToId(id: string): void {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
+}

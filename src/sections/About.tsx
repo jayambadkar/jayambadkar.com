@@ -1,4 +1,5 @@
 import { profile } from '../data';
+import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
 import styles from './About.module.css';
@@ -27,6 +28,28 @@ export function About() {
           </dl>
         </Reveal>
       </div>
+
+      <Reveal className={styles.honoursBlock}>
+        <h3 className={styles.subhead}>Honours &amp; certifications</h3>
+        <ul className={styles.honours}>
+          {profile.honours.map((h) => (
+            <li key={h.title} className={styles.honour}>
+              <span className={styles.honourYear}>{h.year}</span>
+              <span className={styles.honourTitle}>
+                {h.href ? (
+                  <a href={h.href} target="_blank" rel="noopener noreferrer">
+                    {h.title}
+                    <Icon name="arrow-up-right" size={13} />
+                  </a>
+                ) : (
+                  h.title
+                )}
+              </span>
+              <span className={styles.honourDetail}>{h.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </Section>
   );
 }

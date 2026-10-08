@@ -1,0 +1,81 @@
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.axis {
+  stroke: var(--hairline);
+  stroke-width: 1;
+}
+
+.ticks {
+  stroke: var(--fg-subtle);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  opacity: 0.35;
+  animation: fade 2s var(--ease) both;
+}
+
+.trajectory,
+.cycle {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.trajectory {
+  stroke: var(--fg-muted);
+  stroke-width: 0.9;
+  opacity: 0.55;
+  animation: draw 5.5s cubic-bezier(0.45, 0, 0.2, 1) both;
+}
+
+.cycle {
+  stroke: var(--fg);
+  stroke-width: 1.4;
+  animation: draw 3.2s cubic-bezier(0.45, 0, 0.2, 1) 1.2s both;
+}
+
+.dot {
+  fill: var(--accent);
+  opacity: 0;
+  animation: fade 1s ease 3s forwards;
+}
+
+.caption {
+  margin-top: 1rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--fg-subtle);
+  text-align: center;
+}
+
+.caption em {
+  margin-right: 0.4em;
+  color: var(--fg-muted);
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,67 @@
+.marquee {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.label {
+  flex: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.rail {
+  display: flex;
+  width: max-content;
+  animation: scroll 60s linear infinite;
+}
+
+.viewport:hover .rail,
+.viewport:focus-within .rail {
+  animation-play-state: paused;
+}
+
+.track {
+  display: flex;
+  flex: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--fg-muted);
+}
+
+.item::after {
+  content: '·';
+  margin: 0 1.1rem;
+  color: var(--fg-subtle);
+}
+
+.item a {
+  transition: color 0.25s;
+}
+
+.item a:hover {
+  color: var(--accent);
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
