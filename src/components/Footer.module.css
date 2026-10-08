@@ -1,0 +1,28 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 2.5rem;
+  color: var(--fg-subtle);
+  font-size: 0.88rem;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.egg {
+  border: none;
+  background: none;
+  padding: 0.25rem 0;
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.egg:hover {
+  color: var(--accent-2);
+}

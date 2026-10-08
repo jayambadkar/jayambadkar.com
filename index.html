@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jay Ambadkar</title>
+    <meta
+      name="description"
+      content="Jay Ambadkar: Joint Mathematics and Computer Science at Imperial College London. ex-Palantir."
+    />
+    <meta name="theme-color" content="#07080d" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://jayambadkar.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jayambadkar.com/" />
+    <meta property="og:title" content="Jay Ambadkar" />
+    <meta
+      property="og:description"
+      content="Maths × Computer Science at Imperial College London. ex-Palantir."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JayAmbadkar" />
+
+    <!-- Apply the saved/system theme before first paint to avoid a flash. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('ja-theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          }
+          document.documentElement.dataset.theme = t;
+          document.documentElement.style.colorScheme = t;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui">
+        Jay Ambadkar: Maths &amp; Computer Science at Imperial College London.
+        <a href="https://github.com/jayambadkar">GitHub</a> ·
+        <a href="https://x.com/JayAmbadkar">X</a>
+      </p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

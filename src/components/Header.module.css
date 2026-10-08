@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  color: var(--fg-muted);
+  font-size: 0.93rem;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.link:hover {
+  color: var(--fg);
+  background: var(--bg-elev-2);
+}
+
+.active {
+  color: var(--fg);
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.15rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.paletteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 38px;
+  padding: 0 0.6rem 0 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.paletteButton:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+
+.kbd {
+  font-size: 0.72rem;
+}
+
+.mobileLabel {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .actions {
+    margin-left: auto;
+  }
+
+  .kbd,
+  .desktopLabel {
+    display: none;
+  }
+
+  .mobileLabel {
+    display: inline;
+  }
+}
+
+@media (max-width: 420px) {
+  .brandName {
+    display: none;
+  }
+}

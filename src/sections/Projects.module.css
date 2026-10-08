@@ -1,0 +1,170 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.filter {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  transition:
+    color 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.filter:hover {
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+
+.filterActive {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--bg);
+}
+
+.filterActive:hover {
+  color: var(--bg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.cell {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.featured {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-subtle);
+}
+
+.status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg-subtle);
+}
+
+.status[data-status='live']::before {
+  background: #34d399;
+}
+
+.status[data-status='in-progress']::before {
+  background: #fbbf24;
+}
+
+.year {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-subtle);
+}
+
+.title {
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.titleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.titleLink::after {
+  /* Make the whole card clickable. */
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.titleLink svg {
+  color: var(--fg-subtle);
+  transition:
+    transform 0.2s var(--ease),
+    color 0.2s;
+}
+
+.card:hover .titleLink svg {
+  color: var(--accent-2);
+  transform: translate(2px, -2px);
+}
+
+.summary {
+  flex: 1;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags li {
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  background: var(--bg-elev-2);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+}

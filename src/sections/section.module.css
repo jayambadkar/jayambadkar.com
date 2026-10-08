@@ -1,0 +1,31 @@
+.section {
+  position: relative;
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  scroll-margin-top: var(--header-h);
+}
+
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  transition:
+    border-color 0.25s,
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.placeholderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px dashed var(--placeholder);
+  border-radius: 999px;
+  color: var(--placeholder);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
